@@ -59,6 +59,16 @@
       }
 
       & .thumbnail {
+        // 三张缩略图原始比例各不相同（1.44 / 1.24 / 1.52），不约束的话等宽显示时
+        // 高度会差出 100px 以上，三行项目对不齐。统一成 1.5 后由 object-fit 裁切。
+        // object-position 取 top：标题都压在图片顶部，裁切只能从底部吃。
+        & img {
+          width: 100%;
+          aspect-ratio: 1.5;
+          object-fit: cover;
+          object-position: center top;
+        }
+
         border: none;
         box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
         transition: all 0.2s ease-out;
